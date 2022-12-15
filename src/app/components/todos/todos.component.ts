@@ -37,10 +37,19 @@ export class TodosComponent implements OnInit {
   }
 
   addTodo () {
-    this.todos.push({
-      content: this.inputTodo,
-      completed: false
-    });
-    this.inputTodo = '';
+    if(this.isInputEmpty()){
+      return alert('Please enter a todo');
+    }
+    else{
+      this.todos.push({
+        content: this.inputTodo,
+        completed: false
+      });
+      this.inputTodo = '';
+    }
+  }
+  // make sure input is not empty to add todo
+  isInputEmpty () {
+    return this.inputTodo.length === 0;
   }
 }
